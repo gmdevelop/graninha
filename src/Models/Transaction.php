@@ -1,5 +1,8 @@
-<?php 
-class Transaction extends ActiveRecord\Model
+<?php
+
+namespace App\Models;
+
+class Transaction extends \ActiveRecord\Model
 {
     /*static $validates_presence_of = array(
         array('profile_id', 'message' => 'Precisa ter um perfil'),
@@ -46,12 +49,12 @@ class Transaction extends ActiveRecord\Model
         $limit = $url_conditions['limit'];
 
         $where = array();
-        
+
         // filtra sempre pelo mes atual
         //$where['due_date_at > "?"'] = date('Y-m-').'01';
 
         foreach (self::getUrlFilters() as $key => $value) {
-            
+
             if (is_null($value)) continue;
 
             $where[$key] = $value;
@@ -61,11 +64,11 @@ class Transaction extends ActiveRecord\Model
         $conditions = array(
             'conditions'    => $where// array(implode(' AND ', array_keys($where)), array_values($where)),
         );
-        
+
         $conditions['limit'] = $limit;
         $conditions['order'] = $order;
         $conditions['offset'] = $offset;
- 
+
         return self::find("all", $conditions);
     }
 
@@ -91,23 +94,23 @@ class Transaction extends ActiveRecord\Model
             $t->inout = 'out'; // in:entrada, out:saida
 
         return $t->save();
-        
+
         //return $t;
     }
 
     public function getInOut()
     {
         if ($this->inout=='in') {
-        
+
             return 'Entrada';
-        
+
         } else {
-            
+
             return 'Saida';
 
         }
     }
-    
+
     public function getCategory()
     {
         if ($this->category_id==1) {
@@ -159,7 +162,7 @@ class Transaction extends ActiveRecord\Model
         } else {
 
             return $this->due_date_at;
-            
+
         }
     }
 
