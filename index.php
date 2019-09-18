@@ -10,8 +10,9 @@ if (PHP_SAPI == 'cli-server') {
 
 require __DIR__ . '/vendor/autoload.php';
 
+
 session_start();
-    
+
 // Load CORE Config
 require __DIR__ . '/config.php';
 
@@ -36,4 +37,10 @@ require __DIR__ . '/src/middleware.php';
 require __DIR__ . '/src/routes.php';
 
 // Run app
-$app->run();
+try {
+  $app->run();
+} catch (\Exception $e) {
+  echo $e->getMessage();
+} catch (\Throwable $e) {
+  echo $e->getMessage();
+}
