@@ -1,29 +1,20 @@
 <?php
-// Routes
+use App\Models\Transaction;
 
-/*$app->get('/[{name}]', function ($request, $response, $args) {
-    // Sample log message
-    $this->logger->info("Slim-Skeleton '/' route");
-
-    // Render index view
-    return $this->renderer->render($response, 'index.phtml', $args);
-});*/
-
-// redirect to Dashboard/Default
 
 $app->get('/', function ($request, $response, $args) {
   return $response->withRedirect('/dashboard');
 });
 
+
 $app->get('/dashboard', function ($request, $response, $args) {
 
     $data = App\TwigExtension::getTemplateVars();
 
-    //$data['transactions'] = Transaction::simple();
-
     return $this->view->render($response, 'dashboard/index.twig', $data);
 
 })->setName('dashboard_index');
+
 
 $app->get('/profile/change/{id}', function ($request, $response, $args) {
 
