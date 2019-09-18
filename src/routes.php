@@ -10,10 +10,13 @@
 });*/
 
 // redirect to Dashboard/Default
-$app->get('/', function ($request, $response, $args) { return $response->withRedirect('/dashboard', 200); });
+
+$app->get('/', function ($request, $response, $args) {
+  return $response->withRedirect('/dashboard');
+});
 
 $app->get('/dashboard', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     //$data['transactions'] = Transaction::simple();
@@ -23,7 +26,7 @@ $app->get('/dashboard', function ($request, $response, $args) {
 })->setName('dashboard_index');
 
 $app->get('/profile/change/{id}', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     $id = (int) $args['id'];
@@ -39,11 +42,11 @@ $app->get('/profile/change/{id}', function ($request, $response, $args) {
 
         // Set flash message for next request
         foreach ($msg as $key => $message) {
-            
+
             $this->flash->addMessage($key, $message);
 
         }
-        
+
         return $response->withRedirect('/dashboard', 200);
 
     }
@@ -51,7 +54,7 @@ $app->get('/profile/change/{id}', function ($request, $response, $args) {
 })->setName('profile_change');
 
 $app->post('/profile', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     $msg = array();
@@ -64,11 +67,11 @@ $app->post('/profile', function ($request, $response, $args) {
 
         // Set flash message for next request
         foreach ($msg as $key => $message) {
-            
+
             $this->flash->addMessage($key, $message);
 
         }
-        
+
         return $response->withRedirect('/dashboard', 200);
 
     }
@@ -78,7 +81,7 @@ $app->post('/profile', function ($request, $response, $args) {
 $app->get('/start', function ($request, $response, $args) {
     // Sample log message
     //applog("Slim-Skeleton '/' route");
-    
+
     $data = array();
     $data = App\TwigExtension::getTemplateVars();
 
@@ -87,7 +90,7 @@ $app->get('/start', function ($request, $response, $args) {
 });
 
 $app->get('/transaction', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     $data['transactions'] = Transaction::simple();
@@ -104,7 +107,7 @@ $app->get('/transaction', function ($request, $response, $args) {
 })->setName('transaction_index');
 
 $app->get('/transaction/create', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     //$data['transactions'] = Transaction::simple();
@@ -122,7 +125,7 @@ $app->get('/transaction/create', function ($request, $response, $args) {
 })->setName('transaction_create');
 
 $app->get('/transaction/{id}/edit', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     //$data['transactions'] = Transaction::simple();
@@ -143,27 +146,27 @@ $app->get('/transaction/{id}/edit', function ($request, $response, $args) {
 })->setName('transaction_edit');
 
 $app->post('/transaction', function ($request, $response, $args) {
-    
+
     $data = App\TwigExtension::getTemplateVars();
 
     $t = new Transaction;
-    
+
     $saved = $t->saveFromPost();
 
     $msg = array();
-    
+
     if ($saved) {
-        
+
         $msg['ok'] = 'Woohoo! Salvo com sucesso.';
 
     } else {
-        
+
         $msg['error'] = 'Ops! Problema ao salvar dados.';
     }
-    
+
     $data['result'] = $t;
     $data['msg'] = $msg;
-    
+
     if ($request->isXhr()) {
 
         return $response->withJson($data, 201);
@@ -172,11 +175,11 @@ $app->post('/transaction', function ($request, $response, $args) {
 
         // Set flash message for next request
         foreach ($msg as $key => $message) {
-            
+
             $this->flash->addMessage($key, $message);
 
         }
-        
+
         //return $response->withRedirect('/transaction', 200);
         return $response->write('<script>parent.location.reload(true);parent.$.colorbox.close();</script>', 200);
 
@@ -192,17 +195,17 @@ $app->delete('/transaction/{id}', function ($request, $response, $args) {
     $deleted = $t->delete();
 
     if ($deleted) {
-    
+
         $msg['ok'] = 'Woohoo! Salvo com sucesso.';
 
     } else {
-        
+
         $msg['error'] = 'Ops! Problema ao salvar dados.';
     }
-    
+
     $data['result'] = $t;
     $data['msg'] = $msg;
-    
+
     if ($request->isXhr()) {
 
         return $response->withJson($data, 200);
@@ -211,11 +214,11 @@ $app->delete('/transaction/{id}', function ($request, $response, $args) {
 
         // Set flash message for next request
         foreach ($msg as $key => $message) {
-            
+
             $this->flash->addMessage($key, $message);
 
         }
-        
+
         return $response->withRedirect('/transaction', 200);
 
     }
