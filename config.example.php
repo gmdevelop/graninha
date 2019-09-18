@@ -1,4 +1,4 @@
-<?php 
+<?php
 define('SLIM_DISPLAY_ERRORS', true);
 
 define('APP_KEY', 'ANY_KEY_HERE_SECURITY');
@@ -23,7 +23,7 @@ define('DB_SEEDS_PATH', __DIR__.'/database/seeds');
 
 define('DATABASE_PATH_SQLITE', 'database/database.sqlite');
 
-define('DB_AUTOLOAD', false);
+define('DB_AUTOLOAD', true);
 define('DB_CONNECTION', 'sqlite');
 define('DB_NAME', DATABASE_PATH_SQLITE);
 define('DB_HOST', 'localhost');
