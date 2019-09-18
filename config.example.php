@@ -12,7 +12,7 @@ define('TEMPLATE_PATH', __DIR__.TEMPLATE_URI);
 define('TEMPLATE_CACHE_PATH', STORAGE_PATH.'/cache/templates');
 
 // twig
-define('TWIG_DEBUG', false);
+define('TWIG_DEBUG', true);
 
 // logs
 define('LOG_PATH_FILE', __DIR__.'/storage/logs/app.log');
