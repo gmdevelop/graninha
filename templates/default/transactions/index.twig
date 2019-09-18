@@ -3,24 +3,29 @@
 {% set page_title = 'Transação' %}
 
 {% block content %}
-    
-    <!-- <a href="#form-add-transation" id="btn-form-add" data-cb-width="400px" data-cb-height="auto" class="colorbox-inline2 btn btn-primary btn-small pull-right"><i class="glyphicon glyphicon-plus"></i> Add</a> -->
-    <a href="{{path_for('transaction_create')}}" id="btn-form-add" data-cb-width="80%" data-cb-height="80%" class="colorbox-iframe btn btn-primary btn-small pull-right"><i class="glyphicon glyphicon-plus"></i> Add</a>
 
-    <h2>Transações</h2>
+    <!-- <a href="#form-add-transation" id="btn-form-add" data-cb-width="400px" data-cb-height="auto" class="colorbox-inline2 btn btn-primary btn-small pull-right"><i class="glyphicon glyphicon-plus"></i> Add</a> -->
+    <a href="{{path_for('transaction_create')}}" id="btn-form-add" data-cb-width="80%" data-cb-height="80%" class="colorbox-iframe btn btn-primary btn-md pull-right"><i class="glyphicon glyphicon-plus"></i>
+      Novo Lançamento
+    </a>
+
+    <h2>
+      Transações
+    </h2>
 
     {{show_message('error', '<div class="alert alert-warning">', '</div>')}}
     {{show_message('ok', '<div class="alert alert-success">', '</div>')}}
-    
+
     <div class="clearfix"></div>
+
     <div id="block-add-transation" class="well hide">
-        
+
         <h4>Nova Transação</h4>
 
         <form id="frm-add-transaction" action="{{path_for('transaction_store')}}" method="POST">
 
             <div class="col-md-6 col-lg-6">
-                    
+
                 <div class="form-group">
                     <label for="">Descrição</label>
                     <div class="input-group">
@@ -64,7 +69,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="clearfix"></div>
 
             <div class="col-md-12 col-lg-12">
@@ -72,10 +77,10 @@
             </div>
 
             <div class="clearfix"></div>
-            
+
             <div class="frm_block_advanced hide">
                 <hr>
-                
+
                 <div class="col-md-6 col-lg-6">
 
                     <div class="form-group">
@@ -143,7 +148,7 @@
             </tr>
         </thead>
         <tbody>
-        
+
         {% for item in transactions %}
             <tr>
                 <td>{{item.id}}</td>
@@ -167,17 +172,17 @@
 
         </tbody>
     </table>
-    
+
 {% endblock %}
 
 {% block assets_css %}
-    
+
 {% endblock %}
 
 {% block assets_js %}
 <script>
     jQuery(document).ready(function($){
-        
+
         // show/hide advanced options
         $('.btn_advanced_options').click(function(e){
             $('.frm_block_advanced').toggleClass('hide');
@@ -186,7 +191,7 @@
         // confirm form delete
         $('.frm-delete').submit(function(e){
             //e.preventDefault();
-            
+
             var ok = confirm("Deseja remover esse item?");
 
             return ok;
@@ -201,7 +206,7 @@
             e.preventDefault();
             $('#block-add-transation').toggleClass('hide');
         });*/
-        
+
         // convert amount value
         $('#amount_btn_inout').click(function(e){
             $('#input_amount').val($('#input_amount').val()*-1);
@@ -209,28 +214,28 @@
 
         // toogle checkbox
         $('.bs-check-toggle').each(function(){
-            
+
             var me = $(this);
             var content = $('<div>');
 
             var btn = $('<button>').html('Despesa').addClass('btn btn-warning').click(function(e){
 
                 e.preventDefault();
-            
+
                 me.click();
-                
+
                 if (me.is(':checked')) {
-                
+
                     $(this).html('Receita').addClass('btn-success').removeClass('btn-warning');
 
                 } else {
-                    
+
                     $(this).html('Despesa').addClass('btn-warning').removeClass('btn-success');
 
                 }
 
             });
-            
+
             content.append(btn);
 
             $(this).after(content);

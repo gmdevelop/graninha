@@ -7,8 +7,12 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{{page_title}} - Graninha</title>
 
-    <!-- Bootstrap -->
-    <link href="{{template_url}}/assets/bootstrap-3.3.6-dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
     <link href="{{template_url}}/assets/font-awesome-4.6.3/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{template_url}}/assets/css/styles.css" rel="stylesheet">
 
@@ -26,7 +30,7 @@
         <div class="container hide">
             <h1>
                 <span style="background-color: #67CCA4;border-radius:4px; padding:5px 10px; color:#fff">
-                    <i class="glyphicon glyphicon-piggy-bank" style="color: #fff;"></i> 
+                    <i class="glyphicon glyphicon-piggy-bank" style="color: #fff;"></i>
                     Graninha
                 </span>
             </h1>
@@ -34,37 +38,38 @@
         {% if not single_page %}
         {% include 'header_menu.twig' %}
         {% endif %}
-        
+
     </header>
 
     <section id="content">
 
-        <div class="container">
-            
+        <div class="container-fluid">
+
             {% block content %}{% endblock %}
 
         </div>
-        
+
     </section>
 
     <footer id="footer">
-    
+
         {% block footer_menu %}{% endblock %}
-        
+
         {% if not single_page %}
         <div class="container">
             <p class="text-center">Desenvolvido por by <a href="http://in9web.com" target="_blank">[in9]Web</a></p>
         </div>
         {% endif %}
-        
+
     </footer>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="{{template_url}}/assets/js/jquery-1.11.3.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{{template_url}}/assets/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
     <script src="{{template_url}}/assets/js/cidades-estados-1.2-utf8.js"></script>
-    
+
     <!-- colorbox -->
     <link href="{{template_url}}/assets/colorbox/example4/colorbox.css" rel="stylesheet">
     <script src="{{template_url}}/assets/colorbox/jquery.colorbox-min.js"></script>
@@ -91,8 +96,8 @@
         });
     });
     </script>
-    
-    <!-- datepicker -->    
+
+    <!-- datepicker -->
     <link href="{{template_url}}/assets/jquery-ui-1.11.4/themes/cupertino/jquery-ui.min.css" rel="stylesheet">
     <script src="{{template_url}}/assets/jquery-ui-1.11.4/jquery-ui.min.js"></script>
     <script>
